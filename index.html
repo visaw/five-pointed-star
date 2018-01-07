@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="600px" height="700px">
+
+    </canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext('2d');
+            context.fillStyle = '#999999';
+            context.fillRect(0, 0, 600, 300);
+            context.fill();
+            context.shadowOffsetX = 10;
+            context.shadowOffsetY = 10;
+            context.shadowBlur = 10;
+            context.shadowColor = "#ffff00";
+            for (var j = 0; j < 3; j++) {
+                createFiveStars(context)
+            }
+
+            function createFiveStars(context) {
+                context.translate(100, 60);
+                var dx = 50;
+                var dy = 0;
+                var s = 50;
+                context.beginPath();
+                context.fillStyle = "#ff0000";
+                var x = Math.sin(0);
+                var y = Math.cos(0);
+                var deg = Math.PI / 5 * 4;
+                for (var i = 0; i < 5; i++) {
+                    x = Math.sin(i*deg);
+                    y = Math.cos(i*deg);
+                    context.lineTo(s*x+dx, s*y+dy);
+                }
+                context.closePath();
+                context.fill();
+            }
+        }
+    </script>
+</body>
+</html>
